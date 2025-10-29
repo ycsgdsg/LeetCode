@@ -14,8 +14,8 @@ public class AddTwoNumbers {
             return l1;
         }
         ListNode resultNode = null;
-        int val1 = l1 == null ? 0 : l1.val;
-        int val2 = l2 == null ? 0 : l2.val;
+        int val1 = l1.val;
+        int val2 = l2.val;
         int result = val1 + val2;
         if (result >= 10) {
             ListNode carry = new ListNode(1);
@@ -36,9 +36,9 @@ public class AddTwoNumbers {
         } else if (l3 == null) {
             return addTwoNumbers(l1, l2);
         }
-        int val1 = l1 == null ? 0 : l1.val;
-        int val2 = l2 == null ? 0 : l2.val;
-        int val3 = l3 == null ? 0 : l3.val;
+        int val1 = l1.val;
+        int val2 = l2.val;
+        int val3 = l3.val;
         int result = val1 + val2 + val3;
         ListNode resultNode = null;
         if (result >= 10) {
