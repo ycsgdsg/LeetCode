@@ -14,36 +14,25 @@ public class LengthOfLongestSubstring {
         l.lengthOfLongestSubstring("abba");
         l.lengthOfLongestSubstring("eee");
         l.lengthOfLongestSubstring("abb");
+        l.lengthOfLongestSubstring(" ");
+        l.lengthOfLongestSubstring("au");
     }
 
     public int lengthOfLongestSubstring(String s) {
-        if (s == null || s.isEmpty()) {
-            return 0;
-        }
-
+        if (s == null || s.isEmpty()) return 0;
         char[] chars = s.toCharArray();
-        Map<Character, Integer> map = new HashMap<Character, Integer>();
-        int index=0, low=0, length=0;
-        for (; index<chars.length; index++) {
+        Map<Character, Integer> map = new HashMap<>();
+        int index = 0, start = 0, length = 0;
+        for (; index < chars.length; index++) {
             char c = chars[index];
             if (!map.containsKey(c))  {
                 map.put(c, index);
             } else {
-                if (low < map.get(c) + 1) {
-                    low = map.get(c) + 1;
-                }
+                start = Math.max(start, map.get(c) + 1);
                 map.put(c, index);
             }
-
-            if (length < index - low + 1) {
-                length = index - low + 1;
-            }
+            length = Math.max(length, index - start + 1);
         }
-
-        if (length < index - low) {
-            length = index - low;
-        }
-
         return length;
     }
 }

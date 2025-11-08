@@ -1,5 +1,8 @@
 package com.chaoyuan.LeetCode.solution;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * HeapSort.
  *
@@ -8,5 +11,7 @@ package com.chaoyuan.LeetCode.solution;
  * @description: HeapSort
  */
 public class HeapSort {
-    
+    List<Integer> source = new ArrayList<>(List.of(1,4,6));
+
+
 }
