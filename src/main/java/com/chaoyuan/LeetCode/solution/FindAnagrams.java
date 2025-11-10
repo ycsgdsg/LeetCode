@@ -17,26 +17,25 @@ import java.util.List;
 public class FindAnagrams {
     public List<Integer> findAnagrams(String s, String p) {
         List<Integer> result = new ArrayList<>();
-        for (int i = 0; i <= s.length() - p.length(); i++) {
-            String sub = s.substring(i, i + p.length());
-            if (isAngram(sub, p)) {
-                result.add(i);
+        if (s.length() >= p.length()) {
+            int[] charS = new int[26];
+            int[] charP = new int[26];
+            for (int i = 0; i < p.length(); i++) {
+                ++charS[s.charAt(i) - 'a'];
+                ++charP[p.charAt(i) - 'a'];
+            }
+            if (Arrays.equals(charS, charP)) {
+                result.add(0);
+            }
+            for (int i = 0; i < s.length() - p.length(); ++i) {
+                --charS[s.charAt(i) - 'a'];
+                ++charS[s.charAt(i + p.length()) - 'a'];
+                if (Arrays.equals(charS, charP)) {
+                    result.add(i + 1);
+                }
             }
         }
         return result;
-    }
-
-    private boolean isAngram(String s, String p) {
-        if (s.length() != p.length()) return false;
-        char[] charS = s.toCharArray();
-        char[] charP = p.toCharArray();
-        Arrays.sort(charS);
-        Arrays.sort(charP);
-        for (int i = 0; i < s.length(); i++) {
-            if (charS[i] != charP[i])
-                return false;
-        }
-        return true;
     }
 
     public static void main(String[] args) {
