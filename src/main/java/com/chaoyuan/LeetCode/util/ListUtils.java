@@ -1,5 +1,6 @@
 package com.chaoyuan.LeetCode.util;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -12,5 +13,8 @@ import java.util.List;
 public class ListUtils {
     public static <T> void print(List<T> list) {
         list.forEach(System.out::println);
+    }
+    public static <T> void print(T[] list) {
+        Arrays.stream(list).forEach(System.out::println);
     }
 }
